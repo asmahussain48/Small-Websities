@@ -91,6 +91,16 @@ function resetTimer() {
   ambientSound.pause();
 }
 
+function playAmbientSound(type) {
+  ambientSound.pause();
+  if (!type) return;
+
+  ambientSound.src = `${type}.mp3`;
+  ambientSound.play().catch(() => {
+    console.log("Playback failed. User interaction may be required.");
+  });
+}
+
 soundSelector.addEventListener("change", (e) => {
   playAmbientSound(e.target.value);
 });
