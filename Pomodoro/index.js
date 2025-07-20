@@ -39,7 +39,7 @@ function changeBackground(sound) {
       backgroundUrl = "url('rain.jpg')";
       break;
     case "birds":
-      backgroundUrl = "url('birds.jpg')";
+      backgroundUrl = "url('birds.jpeg')";
       break;
     case "classical":
       backgroundUrl = "url('classical.jpg')";
