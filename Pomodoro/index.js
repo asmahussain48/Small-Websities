@@ -3,6 +3,8 @@ const stopEl = document.getElementById("stop");
 const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
 const ambientSound = document.getElementById("ambientSound");
+ambientSound.loop = true;
+
 const soundButtons = document.querySelectorAll(".sound-btn");
 
 const alarmSound = new Audio("alarm.mp3");
@@ -39,7 +41,7 @@ function changeBackground(sound) {
       backgroundUrl = "url('rain.jpg')";
       break;
     case "birds":
-      backgroundUrl = "url('birds.jpeg')";
+      backgroundUrl = "url('birds.jpg')";
       break;
     case "classical":
       backgroundUrl = "url('classical.jpg')";
