@@ -2,11 +2,13 @@ const startEl = document.getElementById("start");
 const stopEl = document.getElementById("stop");
 const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
+const soundSelector = document.getElementById("soundSelector");
+const ambientSound = document.getElementById("ambientSound");
 
 const alarmSound = new Audio("alarm.mp3");
 
 let interval;
-let timeLeft = 1500;
+let timeLeft = 3000;
 
 function updateTimer() {
   const minutes = Math.floor(timeLeft / 60);
@@ -27,7 +29,7 @@ function startTimer() {
       clearInterval(interval);
       alarmSound.play();
       alert("Time's up!");
-      timeLeft = 1500;
+      timeLeft = 3000;
       updateTimer();
     }
   }, 1000);
@@ -35,13 +37,29 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(interval);
+  ambientSound.pause();
 }
 
 function resetTimer() {
   clearInterval(interval);
-  timeLeft = 1500;
+  timeLeft = 3000;
   updateTimer();
+  ambientSound.pause();
 }
+
+function playAmbientSound(type) {
+  ambientSound.pause();
+  if (!type) return;
+
+  ambientSound.src = `${type}.mp3`;
+  ambientSound.play().catch(() => {
+    console.log("Playback failed. User interaction may be required.");
+  });
+}
+
+soundSelector.addEventListener("change", (e) => {
+  playAmbientSound(e.target.value);
+});
 
 updateTimer();
 

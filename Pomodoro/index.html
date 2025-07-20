@@ -10,14 +10,26 @@
 <body>
     <div class="container">
         <h1 class="title">Pomodoro Timer</h1>
-        <p class="timer" id="timer">45:00</p>
+        <p class="timer" id="timer">50:00</p>
         <div class="button-wrapper">
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <button id="reset">Reset</button>
         </div>
-        </div>
-    <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
+        
+
+    <div class="sound-controls">
+    <label for="soundSelector">Ambient Sound:</label>
+    <select id="soundSelector">
+        <option value="">None</option>
+        <option value="rain">Rain</option>
+        <option value="birds">Birds</option>
+        <option value="classical">Classical Music</option>
+    </select>
+</div>
+</div>
+<audio id="ambientSound" preload="auto" loop></audio>
+
     <script src="index.js"></script>
 </body>
 </html>

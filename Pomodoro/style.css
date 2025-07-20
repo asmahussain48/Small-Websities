@@ -51,6 +51,17 @@ button {
   transition: transform 0.2s ease, background-color 0.3s ease;
   color: white;
 }
+.sound-controls {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#soundSelector {
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
 
 button:hover {
   transform: scale(1.05);
