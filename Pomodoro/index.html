@@ -20,12 +20,15 @@
 
     <div class="sound-controls">
     <label for="soundSelector">Ambient Sound:</label>
-    <select id="soundSelector">
-        <option value="">None</option>
-        <option value="rain">Rain</option>
-        <option value="birds">Birds</option>
-        <option value="classical">Classical Music</option>
-    </select>
+    <div class="sound-buttons">
+  <button class="sound-btn" data-sound="rain">Rain</button>
+  <button class="sound-btn" data-sound="birds">Birds</button>
+  <button class="sound-btn" data-sound="classical">Classical</button>
+</div>
+
+<audio id="ambientSound" preload="auto" loop></audio>
+
+    
 </div>
 </div>
 <audio id="ambientSound" preload="auto" loop></audio>
