@@ -1,69 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  transition: background-image 0.5s ease-in-out;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  color: #ffffff;
+  height: 100vh;
+  overflow: hidden;
+}
+
 #bgVideo {
   position: fixed;
   top: 0;
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -1;
   object-fit: cover;
-  opacity: 0.6;
+  z-index: -1;
+  filter: brightness(1); /* optional adjustment */
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 30px 40px;
+  max-width: 500px;
+  margin: auto;
+  padding: 40px 30px;
+  background: rgba(0, 0, 0, 0.4); /* transparent glass feel */
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
   text-align: center;
-  width: 90%;
-  max-width: 450px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  margin-top: 80px;
 }
 
 .title {
   font-size: 36px;
+  font-weight: 600;
   margin-bottom: 20px;
-  color: #2c3e50;
+  color: #f0f0f0;
 }
 
 .timer {
   font-size: 72px;
   font-weight: bold;
-  color: #34495e;
+  color: #ffffff;
   margin: 30px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .button-wrapper {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 15px;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
 
 button {
   font-size: 16px;
   padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   color: white;
   transition: transform 0.2s, background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -71,11 +77,11 @@ button:hover {
 }
 
 #start {
-  background-color: #27ae60;
+  background-color: #2ecc71;
 }
 
 #stop {
-  background-color: #c0392b;
+  background-color: #e74c3c;
 }
 
 #reset {
@@ -85,20 +91,37 @@ button:hover {
 .sound-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-top: 20px;
 }
 
 .sound-btn {
   background-color: #3498db;
-  color: white;
-  padding: 10px 15px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
+  color: white;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .sound-btn:hover {
   background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .timer {
+    font-size: 50px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .container {
+    padding: 25px 20px;
+  }
 }
