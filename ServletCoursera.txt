@@ -1,0 +1,580 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%!
+	String beers[]={"Amber Ale","Stout","Lager"};
+    String qty[]={"0","0","0"};
+	String myqty[]={"","",""};
+	double thecost[]={0.00,0.00,0.00};
+	int q[]={0,0,0};
+	double price[]={7.00,5.00,8.00};
+	
+	String users[]={"admin","jim","jenny"};
+	String pwd[]={"pwd!","welcome$","welcome$"};
+	String user;
+	String suser=null;
+	int itmCounter=0;
+%>
+<%
+    user = request.getParameter("username");
+	session.setAttribute("uname", user);
+	suser = session.getAttribute("uname").toString();
+	out.println("<br>Welcome member: " + suser);
+%>
+<html>
+<head>
+<meta http-eqUIv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript">
+function validate(){
+    
+    if(document.f.qty0.value == "" && document.f.qty1.value == "" && document.f.qty2.value == ""){
+       alert( "You need an entry in at least 1 field" );
+       return false;
+    }
+  }
+</script>
+<title>Make Your Order</title>
+</head>
+<body>
+<form name="f" ACTION="./confrimOrder.jsp" method="post" onsubmit="return validate()">
+<h3>Please Select your Choices</h3>
+<p><input type="text" name="qty[0]" id="qty0" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label for="qty[0]"> Amber Ale: $7.00</label></p>
+<p><input type="text" name="qty[1]" id="qty1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label for="qty[1]"> Stout: $5.00</label></p>
+<p><input type="text" name="qty[2]" id="qty2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label for="qty[2]"> Lager: $8.00</label></p>
+<p><input type="hidden" name="username" id="username" value="<%= suser %>"></p>
+<p><input type="submit" value="submit"></p>
+</form>
+
+</body>
+</html>
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+answer of 10
+GPT-4o Mini
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+GPT-4o Mini
+GPT-4o Mini
+coin image
+10
+Upgrade
+
+
+
+
+Ask me anything...
+
+
+
+Make a Review & Earn Credit ❤
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Full Page
+Invite & Earn
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script>
+
+      // Form validation code will come here.
+      function validate(){
+      
+         if(document.loginfrm.username.value == "" || document.loginfrm.pwd.value == ""){
+            alert( "Both username and password are required fields" );
+            document.loginfrm.username.focus() ;
+            return false;
+         }
+       }
+</script>
+<title>Login</title>
+</head>
+<body>
+<div style="text-align:center"><h1><b>Welcome to the Craft Pub!</b></h1></div>
+<br>
+<div style="margin:0 auto" align=center>
+<FORM class="text-center" name="loginfrm" METHOD=POST onsubmit="return validate()" ACTION="./selectOrder.jsp" style="width: 643px; ">
+Enter user name: <INPUT TYPE=TEXT NAME=username id=username SIZE=20><br><br>
+Enter password:  <INPUT TYPE=password NAME=pwd SIZE=20><br>
+<P><INPUT TYPE=SUBMIT value="Login">
+</FORM>
+</div>
+</body>
+</html>
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+answer of 10
+GPT-4o Mini
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+GPT-4o Mini
+GPT-4o Mini
+coin image
+10
+Upgrade
+
+
+
+
+Ask me anything...
+
+
+
+Make a Review & Earn Credit ❤
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Full Page
+Invite & Earn
+package proc;
+
+import java.io.IOException;
+import java.io.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class base
+ */
+@WebServlet("/proc/base.md")
+public class Base extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    private String message;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Base() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		message = "Thanks for using the Craft Pub!";
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html");
+		String suser = request.getParameter("username");
+		
+		PrintWriter out = response.getWriter();
+		out.println("<div style=\"text-align:center\"><h1>" + message + " " + suser + "</h1></div><br>");
+		out.println("<br><a href=\"../selectOrder.jsp?username=" + suser + "\">Start a New Order</a><br>");
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+answer of 10
+GPT-4o Mini
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+GPT-4o Mini
+GPT-4o Mini
+coin image
+10
+Upgrade
+
+
+
+
+Ask me anything...
+
+
+
+Make a Review & Earn Credit ❤
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Full Page
+Invite & Earn
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ServletBasics
+ */
+@WebServlet("/processorder")
+public class ServletBasics extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	private double grandTotal=0;
+	private String strGrandTotal="";
+	double subtotal[]={0,0,0};
+	String strSubTot[]={"","",""};
+	
+	String beers[]={"Amber Ale","Stout","Lager"};
+	double price[]={7.00,5.00,8.00};
+	String strPrice[]={"","",""};
+	int quant[]={0,0,0};
+	String strQuant[]={"","",""};
+	private String message;
+	int intItmCount = 0;
+	
+	public void init() throws ServletException {
+	      // Do required initialization lager
+	      message = "Greetings, Welcome to the Craft Pub";
+	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletBasics() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		// Set response content type
+	      response.setContentType("text/html");
+
+	      // Actual logic goes here.
+	      PrintWriter out = response.getWriter();
+	      out.println("<h1>" + message + "</h1>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		// Set response content type
+	      response.setContentType("text/html");
+	      PrintWriter out = response.getWriter();
+	      out.println("<div style=\"text-align:center\"><h1> Thank You for your Purchase! </h1></div><br>");
+	      grandTotal=0;
+	      	      
+	      String suser = request.getParameter("username");
+	      out.println("<div style=\"text-align:center\"> Great, " + suser + ". It is a pleasure to serve you.</div><br>");
+	      
+	      String itmCount = request.getParameter("itmCount");
+	      try{
+	    	  intItmCount = Integer.parseInt(itmCount);
+	      }catch (Exception ex){
+	    	  System.out.println(ex.toString());
+	      }
+	      if(intItmCount > 1){
+	    	  out.println("<div style=\"text-align:center\"><h2>You have selected " + intItmCount + " different types of beer. We know you will enjoy them</h2></div>");
+	      } //if
+	      else {
+	    	  out.println("<div style=\"text-align:center\"><h2>You have selected " + intItmCount + " type of beer. We know you will enjoy it.</h2></div>");
+	      } //else
+	      for(int z=0;z<strQuant.length;z++){
+	    	  strQuant[z] = request.getParameter("beer[" + z + "]");
+		      if(strQuant[z]==""){
+		    	  strQuant[z]="0";
+			  } //if
+	      } //for
+	      
+		  try{
+		      for(int k=0;k<beers.length;k++){
+			      quant[k] = Integer.parseInt(strQuant[k]);
+			  } //for
+		  }catch(Exception ex){
+		      System.out.println(ex.toString());
+			  out.println("<html><h1> Make sure a valid quantity is entered for the item</h1></htnl>");
+		  }
+			
+	      response.setContentType("text/html");
+	      response.setCharacterEncoding("UTF-8");
+	      for(int i = 0;i<price.length;i++){
+	          strPrice[i] = String.format("%.2f", price[i]);
+	      } //for
+	        
+	      for(int j=0;j<3;j++){
+	        	
+		      if(quant[j]>0){
+		          subtotal[j] = quant[j] * price[j];
+		          strSubTot[j] = String.format("%.2f", subtotal[j]);
+		          grandTotal += subtotal[j];	          
+		          out.println("<div style=\"text-align:center\"><h2> The quantity ordered of "+ beers[j] + " is: " + quant[j] + ", at price: $" + strPrice[j] + ". The subtotal is: $" + strSubTot[j] + "</h2></div>");
+		      } //if
+		  } //for
+	        
+	      strGrandTotal = String.format("%.2f", grandTotal);
+	      out.println("<br><div style=\"text-align:left\"><h1>The Grand Total is: $" + strGrandTotal + "</h1></div>");
+	      out.println("<br><a href=\"./selectOrder.jsp?username=" + suser + "\">Start a New Order</a>");
+	      out.println("<br><a href=\"./proc/base.md?username=" + suser + "\">Wrap Up</a><br>");
+	  } //doPost
+} //class
+
+
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+answer of 10
+GPT-4o Mini
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+GPT-4o Mini
+GPT-4o Mini
+coin image
+10
+Upgrade
+
+
+
+
+Ask me anything...
+
+
+
+Make a Review & Earn Credit ❤
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Full Page
+Invite & Earn
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%!
+	String beers[]={"Amber Ale","Stout","Lager"};
+    String qty[]={"0","0","0"};
+	String myqty[]={"","",""};
+	double thecost[]={0.00,0.00,0.00};
+	String strCost[]={"","",""};
+	int q[]={0,0,0};
+	double price[]={7.00,5.00,8.00};
+	String strPrice[]={"","",""};
+	
+	String users[]={"admin","jim","jenny"};
+	String pwd[]={"pwd!","welcome$","welcome$"};
+	String suser=null;
+	int itmCounter=0;
+%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Order Confirmation</title>
+</head>
+<body>
+
+<%
+    out.println("<div style=\"text-align:center\"><h1>Order Confirmation</h1></div><br>");
+	for(int i=0;i<beers.length;i++){
+		myqty[i] = request.getParameter("qty[" + i + "]");
+	}
+	
+    suser = session.getAttribute("uname").toString();
+    out.println("<left> Great, " + suser + "</left><br>");
+   
+    if(myqty[0] != null || myqty[1] != null || myqty[2] != null){
+    	int theqty;
+%>
+<h4>You selected options </h4>
+<ul>
+<%  
+      itmCounter = 0;
+	  for(int i=0; i<beers.length; i++){   
+        
+        if(myqty[i]!=""){ %>
+        <li>
+        	<%= beers[i] %>
+        </li>
+<%      } //if  
+   	
+        try{
+		    theqty = Integer.parseInt(myqty[i]);
+        }catch(Exception ex){
+    	    theqty = 0;
+        }
+        if(myqty[i]!=""){
+	        thecost[i] = price[i]*theqty;
+	        strPrice[i] = String.format("%.2f", price[i]);
+	        strCost[i] = String.format("%.2f", thecost[i]);
+	        out.print("The quantity: "+myqty[i]+"<br>");
+	        out.print("The price: $"+strPrice[i]+"<br>");
+	        out.print("The cost: $"+strCost[i]+"<br>");
+	        out.print("<br>");
+		    itmCounter++;
+	    }//if
+      } //for
+      out.println("<a href=\"./selectOrder.jsp?username=" + suser + "\">Change the Order</a>");
+%>
+</ul>
+	   <form name="f1" ACTION="./processorder" method="post">
+	    <% for(int j=0; j<beers.length; j++){  
+	        //out.print("<p><input type=\"text\" name=\"beer[" + j + "]\" id=\"beer[" + j + "]\" value=\"" + myqty[j] + "\"></p>");
+	    	out.print("<p><input type=\"hidden\" name=\"beer[" + j + "]\" id=\"beer[" + j + "]\" value=\"" + myqty[j] + "\"></p>");
+	       } //for   
+	     %>
+	    <p><input type="hidden" name="itmCount" id="itmCount" value="<%= itmCounter%>"></p>
+	    <p><input type="hidden" name="username" id="username" value="<%= suser %>"></p>
+	    <p><input type="submit" value="submit purchase"></p>
+	    </form>
+<%
+    }//if
+%>
+
+</body>
+</html>
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+answer of 10
+GPT-4o Mini
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+GPT-4o Mini
+GPT-4o Mini
+coin image
+10
+Upgrade
+
+
+
+
+Ask me anything...
+
+
+
+Make a Review & Earn Credit ❤
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Full Page
+Invite & Earn
