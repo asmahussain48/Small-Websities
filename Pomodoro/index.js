@@ -4,6 +4,30 @@ const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
 const soundSelector = document.getElementById("soundSelector");
 const ambientSound = document.getElementById("ambientSound");
+const soundButtons = document.querySelectorAll(".sound-btn");
+const ambientSound = document.getElementById("ambientSound");
+let selectedSound = "";
+let isTimerRunning = false;
+
+function playAmbientSound() {
+  if (selectedSound && isTimerRunning) {
+    ambientSound.src = `${selectedSound}.mp3`;
+    ambientSound.play().catch(() => {});
+  }
+}
+
+function stopAmbientSound() {
+  ambientSound.pause();
+  ambientSound.currentTime = 0;
+}
+
+// Handle button clicks
+soundButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    selectedSound = button.dataset.sound;
+    playAmbientSound();
+  });
+});
 
 const alarmSound = new Audio("alarm.mp3");
 
@@ -21,12 +45,17 @@ function updateTimer() {
 
 function startTimer() {
   clearInterval(interval);
+  isTimerRunning = true;
+  playAmbientSound();
+
   interval = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
       updateTimer();
     } else {
       clearInterval(interval);
+      isTimerRunning = false;
+      stopAmbientSound();
       alarmSound.play();
       alert("Time's up!");
       timeLeft = 3000;
@@ -34,6 +63,21 @@ function startTimer() {
     }
   }, 1000);
 }
+
+function stopTimer() {
+  clearInterval(interval);
+  isTimerRunning = false;
+  stopAmbientSound();
+}
+
+function resetTimer() {
+  clearInterval(interval);
+  timeLeft = 3000;
+  updateTimer();
+  isTimerRunning = false;
+  stopAmbientSound();
+}
+
 
 function stopTimer() {
   clearInterval(interval);
@@ -45,16 +89,6 @@ function resetTimer() {
   timeLeft = 3000;
   updateTimer();
   ambientSound.pause();
-}
-
-function playAmbientSound(type) {
-  ambientSound.pause();
-  if (!type) return;
-
-  ambientSound.src = `${type}.mp3`;
-  ambientSound.play().catch(() => {
-    console.log("Playback failed. User interaction may be required.");
-  });
 }
 
 soundSelector.addEventListener("change", (e) => {
