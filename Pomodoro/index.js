@@ -4,6 +4,7 @@ const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
 const ambientSound = document.getElementById("ambientSound");
 ambientSound.loop = true;
+const bgVideo = document.getElementById("bgVideo");
 
 const soundButtons = document.querySelectorAll(".sound-btn");
 
@@ -34,22 +35,37 @@ function stopAmbientSound() {
   ambientSound.currentTime = 0;
 }
 
+// function changeBackground(sound) {
+//   let backgroundUrl = "";
+//   switch (sound) {
+//     case "rain":
+//       backgroundUrl = "url('rain.jpg')";
+//       break;
+//     case "birds":
+//       backgroundUrl = "url('birds.jpg')";
+//       break;
+//     case "classical":
+//       backgroundUrl = "url('classical.jpg')";
+//       break;
+//     default:
+//       backgroundUrl = "";
+//   }
+//   document.body.style.backgroundImage = backgroundUrl;
+// }
 function changeBackground(sound) {
-  let backgroundUrl = "";
   switch (sound) {
     case "rain":
-      backgroundUrl = "url('rain.jpg')";
+      bgVideo.src = "rain.mp4";
       break;
     case "birds":
-      backgroundUrl = "url('birds.jpg')";
+      bgVideo.src = "birds.mp4";
       break;
     case "classical":
-      backgroundUrl = "url('classical.jpg')";
+      bgVideo.src = "classical.mp4";
       break;
     default:
-      backgroundUrl = "";
+      bgVideo.removeAttribute("src");
   }
-  document.body.style.backgroundImage = backgroundUrl;
 }
 
 soundButtons.forEach(button => {
