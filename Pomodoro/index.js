@@ -72,7 +72,11 @@ function stopTimer() {
 
 function resetTimer() {
   clearInterval(interval);
- 
+  timeLeft = 3000;
+  updateTimer();
+  isTimerRunning = false;
+  stopAmbientSound();
+}
 
 
 function stopTimer() {
