@@ -36,12 +36,15 @@ function stopAmbientSound() {
 
 function changeBackground(sound) {
   let backgroundUrl = "";
+  document.querySelector(".rain")?.classList.remove("active");
+
   switch (sound) {
     case "rain":
       backgroundUrl = "url('rain.jpg')";
+      document.querySelector(".rain")?.classList.add("active");
       break;
     case "birds":
-      backgroundUrl = "url('birds.jpg')";
+      backgroundUrl = "url('birds.jpeg')";
       break;
     case "classical":
       backgroundUrl = "url('classical.jpg')";
@@ -49,8 +52,10 @@ function changeBackground(sound) {
     default:
       backgroundUrl = "";
   }
+
   document.body.style.backgroundImage = backgroundUrl;
 }
+
 
 soundButtons.forEach(button => {
   button.addEventListener("click", () => {
