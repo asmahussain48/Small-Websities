@@ -118,15 +118,16 @@ const soundPanel = document.querySelector(".sound-panel");
 fullscreenBtn.addEventListener("click", () => {
   if (!document.fullscreenElement) {
     fullscreenWrapper.requestFullscreen().then(() => {
+      fullscreenWrapper.classList.add("fullscreen-mode");
       soundPanel.style.display = "none";
       mainLayout.style.justifyContent = "center";
-      fullscreenWrapper.classList.add("fullscreen-mode");
     });
   } else {
     document.exitFullscreen().then(() => {
-      soundPanel.style.display = "";
-      mainLayout.style.justifyContent = "center";
       fullscreenWrapper.classList.remove("fullscreen-mode");
+      soundPanel.style.display = "";
+      mainLayout.style.justifyContent = "center"; // or original layout if needed
     });
   }
 });
+

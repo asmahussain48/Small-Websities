@@ -1,4 +1,3 @@
-/* === GLOBAL === */
 body {
   margin: 0;
   padding: 0;
@@ -10,24 +9,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
-  min-height: 100vh;
-  padding: 40px;
+  gap: 40px;
+  min-height: 80vh;
+  padding: 30px;
 }
 
-/* === POMODORO TIMER === */
 .container {
   background: #ffffff;
   padding: 50px 60px;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 480px;
   width: 100%;
+  height: 100%;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 10px;
   font-weight: 600;
   color: #2c3e50;
@@ -91,7 +90,9 @@ button:hover {
 }
 
 .sound-option {
-  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1px;
+  margin-bottom: 10px;
 }
 
 .sound-option span {
@@ -103,11 +104,11 @@ button:hover {
 
 /* === SLIDER STYLES === */
 input[type="range"] {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
   -webkit-appearance: none;
   width: 100%;
   height: 6px;
   border-radius: 5px;
-  background: #ccc;
   outline: none;
   transition: background 0.3s;
 }
@@ -144,27 +145,23 @@ input[type="range"]::-moz-range-thumb {
     padding: 30px 20px;
   }
 
-  .container {
-    width: 100%;
-    max-width: 90vw;
-  }
-
   .sound-panel {
     width: 100%;
     max-width: 320px;
   }
-}.fullscreen-btn {
+}
+
+/* === FULLSCREEN BUTTON === */
+.fullscreen-btn {
+  background: white;
+  bottom: 14px;
+  right: 14px;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: black;
-  border: none;
   cursor: pointer;
-  padding: 8px;
-  z-index: 999;
 }
 
 .fullscreen-icon {
+  background: black;
   width: 28px;
   height: 28px;
   fill: #2c3e50;
@@ -175,13 +172,42 @@ input[type="range"]::-moz-range-thumb {
   transform: scale(1.2);
   fill: #3498db;
 }
+
+/* === FULLSCREEN MODE === */
 .fullscreen-mode {
-  background: #000;
+  background: black;
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;     /* vertically center */
-  justify-content: center; /* horizontally center */
+  align-items: center;
+  justify-content: center;
   position: relative;
   padding: 0;
+}
+
+#fullscreen-wrapper.fullscreen-mode {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+
+#fullscreen-wrapper.fullscreen-mode .container {
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  height: auto;
+}
+
+#fullscreen-wrapper.fullscreen-mode .title {
+  font-size: 48px;
+}
+
+#fullscreen-wrapper.fullscreen-mode .timer {
+  font-size: 96px;
 }
