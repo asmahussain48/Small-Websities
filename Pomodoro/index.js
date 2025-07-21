@@ -62,13 +62,13 @@ const soundFiles = {
 const audioElements = {};
 let unlocked = false;
 
-// Create and preload audio
 Object.entries(soundFiles).forEach(([key, src]) => {
   const audio = new Audio(src);
   audio.loop = true;
   audio.volume = 0;
   audioElements[key] = audio;
 });
+
 const sliders = document.querySelectorAll('input[type="range"]');
 
 sliders.forEach(slider => {
@@ -78,7 +78,6 @@ sliders.forEach(slider => {
   });
 });
 
-// Unlock all audio on first click
 document.addEventListener("click", () => {
   if (!unlocked) {
     Object.values(audioElements).forEach(audio => {
@@ -88,7 +87,6 @@ document.addEventListener("click", () => {
   }
 });
 
-// Volume slider logic for mixing
 document.querySelectorAll('input[type="range"]').forEach(slider => {
   slider.min = 0;
   slider.max = 1;
@@ -105,14 +103,13 @@ document.querySelectorAll('input[type="range"]').forEach(slider => {
       if (volume > 0 && audio.paused) {
         audio.play().catch(() => {});
       } else if (volume === 0) {
-        audio.pause(); // or keep looping if preferred
+        audio.pause();
       }
     }
   });
 });
 
-// fullscreen.js
-
+// Fullscreen Toggle
 const fullscreenBtn = document.getElementById("fullscreen");
 const fullscreenWrapper = document.getElementById("fullscreen-wrapper");
 const mainLayout = document.querySelector(".main-layout");
@@ -124,15 +121,12 @@ fullscreenBtn.addEventListener("click", () => {
       soundPanel.style.display = "none";
       mainLayout.style.justifyContent = "center";
       fullscreenWrapper.classList.add("fullscreen-mode");
-      fullscreenBtn.textContent = "Exit Fullscreen";
     });
   } else {
     document.exitFullscreen().then(() => {
       soundPanel.style.display = "";
       mainLayout.style.justifyContent = "center";
       fullscreenWrapper.classList.remove("fullscreen-mode");
-      fullscreenBtn.textContent = "Fullscreen";
     });
   }
 });
-

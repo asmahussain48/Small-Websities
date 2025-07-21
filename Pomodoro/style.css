@@ -153,13 +153,35 @@ input[type="range"]::-moz-range-thumb {
     width: 100%;
     max-width: 320px;
   }
+}.fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: black;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 999;
+}
+
+.fullscreen-icon {
+  width: 28px;
+  height: 28px;
+  fill: #2c3e50;
+  transition: transform 0.2s ease;
+}
+
+.fullscreen-btn:hover .fullscreen-icon {
+  transform: scale(1.2);
+  fill: #3498db;
 }
 .fullscreen-mode {
-  background: url('images/focus-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: #000;
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;     /* vertically center */
+  justify-content: center; /* horizontally center */
+  position: relative;
+  padding: 0;
 }
