@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
-        <h1 class="title">Pomodoro Timer</h1>
-        <p class="timer" id="timer">50:00</p>
 
-        <div class="button-wrapper">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
-        </div>
-        
-     
-
-    <div class="sound-controls">
-   <label for="soundSelector" class="sound-label">Ambient Sound</label>
-        <div class="sound-buttons">
-            <button class="sound-btn" data-sound="rain">Rain</button>
-            <button class="sound-btn" data-sound="birds">Birds</button>
-            <button class="sound-btn" data-sound="classical">Classical</button>
-        </div>
-        <audio id="ambientSound" preload="auto" loop></audio>
+  <div class="main-layout">
+    
+    <!-- 🎵 Sound Panel on the Left -->
+    <div class="sound-panel">
+      <h3>🎵 Sound</h3>
+      <div class="sound-option"><span>🎬 Original video sound</span><input type="range" data-sound="original" /></div>
+      <div class="sound-option"><span>🎧 LoFi beats</span><input type="range" data-sound="lofi" /></div>
+      <div class="sound-option"><span>🌿 Nature sounds</span><input type="range" data-sound="nature" /></div>
+      <div class="sound-option"><span>💧 Rain sounds</span><input type="range" data-sound="rain" /></div>
+      <div class="sound-option"><span>🔥 Fireplace sounds</span><input type="range" data-sound="fireplace" /></div>
+      <div class="sound-option"><span>📚 Library ambience</span><input type="range" data-sound="library" /></div>
     </div>
-</div>
-<audio id="ambientSound" preload="auto" loop></audio>
+    <div id="fullscreen-wrapper">
+    <div class="container"> 
+      <h1 class="title">Pomodoro Timer</h1>
+      <p class="timer" id="timer">50:00</p>
 
-    <script src="index.js"></script>
+      <div class="button-wrapper">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+      </div>
+      <button id="fullscreen">Fullscreen</button>
+    </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
