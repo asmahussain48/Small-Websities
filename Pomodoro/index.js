@@ -118,11 +118,4 @@ fullscreenButton.addEventListener("click", function () {
       soundPanel.style.display = "none";
       mainLayout.style.justifyContent = "center";
     });
-  } else {
-    document.exitFullscreen().then(function () {
-      fullscreenWrapper.classList.remove("fullscreen-mode");
-      soundPanel.style.display = "block";
-      mainLayout.style.justifyContent = "center"; // adjust if needed
-    });
-  }
-});
+  } 
