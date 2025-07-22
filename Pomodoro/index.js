@@ -1,133 +1,108 @@
-// Pomodoro Timer Logic
-const startEl = document.getElementById("start");
-const stopEl = document.getElementById("stop");
-const resetEl = document.getElementById("reset");
-const timerEl = document.getElementById("timer");
+// Timer Setup
+var startButton = document.getElementById("start");
+var stopButton = document.getElementById("stop");
+var resetButton = document.getElementById("reset");
+var timerDisplay = document.getElementById("timer");
 
-let interval;
-let timeLeft = 3000;
-let isTimerRunning = false;
+var timerInterval;
+var totalTimeInSeconds = 3000;
+var timerIsRunning = false;
 
-function updateTimer() {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  timerEl.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
+function showTime() {
+  var minutes = Math.floor(totalTimeInSeconds / 60);
+  var seconds = totalTimeInSeconds % 60;
+  var timeString = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+  timerDisplay.textContent = timeString;
 }
 
 function startTimer() {
-  clearInterval(interval);
-  isTimerRunning = true;
-  interval = setInterval(() => {
-    if (timeLeft > 0) {
-      timeLeft--;
-      updateTimer();
+  if (timerIsRunning) return;
+  timerIsRunning = true;
+  timerInterval = setInterval(function () {
+    if (totalTimeInSeconds > 0) {
+      totalTimeInSeconds = totalTimeInSeconds - 1;
+      showTime();
     } else {
-      clearInterval(interval);
-      isTimerRunning = false;
+      clearInterval(timerInterval);
+      timerIsRunning = false;
       alert("Time's up!");
     }
   }, 1000);
 }
 
 function stopTimer() {
-  clearInterval(interval);
-  isTimerRunning = false;
+  clearInterval(timerInterval);
+  timerIsRunning = false;
 }
 
 function resetTimer() {
-  clearInterval(interval);
-  timeLeft = 3000;
-  updateTimer();
-  isTimerRunning = false;
+  clearInterval(timerInterval);
+  totalTimeInSeconds = 3000;
+  showTime();
+  timerIsRunning = false;
 }
 
-startEl.addEventListener("click", startTimer);
-stopEl.addEventListener("click", stopTimer);
-resetEl.addEventListener("click", resetTimer);
+startButton.addEventListener("click", startTimer);
+stopButton.addEventListener("click", stopTimer);
+resetButton.addEventListener("click", resetTimer);
+showTime(); // Initialize
 
-updateTimer(); // Initialize the timer
-
-// Ambient Sound Logic (MIXING enabled)
-const soundFiles = {
+var soundFiles = {
   original: "sounds/original.mp3",
   lofi: "sounds/lofi.mp3",
-  nature: "sounds/nature.mp3",
-  rain: "sounds/rain.mp3",
-  fireplace: "sounds/fireplace.mp3",
   library: "sounds/library.mp3",
+  rain: "sounds/rain.mp3",
+  nature: "sounds/nature.mp3",
+  fireplace: "sounds/fireplace.mp3"
 };
 
-const audioElements = {};
-let unlocked = false;
 
-Object.entries(soundFiles).forEach(([key, src]) => {
-  const audio = new Audio(src);
+var audioElements = {};
+var soundsUnlocked = false;
+
+for (var key in soundFiles) {
+  var audio = new Audio(soundFiles[key]);
   audio.loop = true;
   audio.volume = 0;
   audioElements[key] = audio;
-});
+}
 
-const sliders = document.querySelectorAll('input[type="range"]');
-
-sliders.forEach(slider => {
-  slider.addEventListener("input", function () {
-    const value = (this.value - this.min) / (this.max - this.min) * 100;
-    this.style.background = `linear-gradient(to right, #4facfe 0%, #00f2fe ${value}%, #ccc ${value}%)`;
-  });
-});
-
-document.addEventListener("click", () => {
-  if (!unlocked) {
-    Object.values(audioElements).forEach(audio => {
-      audio.play().catch(() => {});
-    });
-    unlocked = true;
+document.addEventListener("click", function () {
+  if (!soundsUnlocked) {
+    for (var key in audioElements) {
+      audioElements[key].play().catch(function () {});
+    }
+    soundsUnlocked = true;
   }
 });
 
-document.querySelectorAll('input[type="range"]').forEach(slider => {
+var sliders = document.querySelectorAll('input[type="range"]');
+
+for (var i = 0; i < sliders.length; i++) {
+  var slider = sliders[i];
   slider.min = 0;
   slider.max = 1;
   slider.step = 0.01;
   slider.value = 0;
 
-  slider.addEventListener("input", (e) => {
-    const soundKey = e.target.getAttribute("data-sound");
-    const volume = parseFloat(e.target.value);
-    const audio = audioElements[soundKey];
+  slider.addEventListener("input", function (event) {
+    var soundKey = event.target.getAttribute("data-sound");
+    var volume = parseFloat(event.target.value);
+    var audio = audioElements[soundKey];
 
     if (audio) {
       audio.volume = volume;
       if (volume > 0 && audio.paused) {
-        audio.play().catch(() => {});
+        audio.play();
       } else if (volume === 0) {
         audio.pause();
       }
     }
+
+    // Optional visual style for slider (simple gradient)
+    var percent = (event.target.value - event.target.min) / (event.target.max - event.target.min) * 100;
+    event.target.style.background = "linear-gradient(to right, #4facfe 0%, #00f2fe " + percent + "%, #ccc " + percent + "%)";
   });
-});
+}
 
-// Fullscreen Toggle
-const fullscreenBtn = document.getElementById("fullscreen");
-const fullscreenWrapper = document.getElementById("fullscreen-wrapper");
-const mainLayout = document.querySelector(".main-layout");
-const soundPanel = document.querySelector(".sound-panel");
-
-fullscreenBtn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    fullscreenWrapper.requestFullscreen().then(() => {
-      fullscreenWrapper.classList.add("fullscreen-mode");
-      soundPanel.style.display = "none";
-      mainLayout.style.justifyContent = "center";
-    });
-  } else {
-    document.exitFullscreen().then(() => {
-      fullscreenWrapper.classList.remove("fullscreen-mode");
-      soundPanel.style.display = "";
-      mainLayout.style.justifyContent = "center"; // or original layout if needed
-    });
-  }
-});
 
