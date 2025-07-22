@@ -105,4 +105,24 @@ for (var i = 0; i < sliders.length; i++) {
   });
 }
 
+// Fullscreen Toggle
+var fullscreenButton = document.getElementById("fullscreen");
+var fullscreenWrapper = document.getElementById("fullscreen-wrapper");
+var mainLayout = document.querySelector(".main-layout");
+var soundPanel = document.querySelector(".sound-panel");
 
+fullscreenButton.addEventListener("click", function () {
+  if (!document.fullscreenElement) {
+    fullscreenWrapper.requestFullscreen().then(function () {
+      fullscreenWrapper.classList.add("fullscreen-mode");
+      soundPanel.style.display = "none";
+      mainLayout.style.justifyContent = "center";
+    });
+  } else {
+    document.exitFullscreen().then(function () {
+      fullscreenWrapper.classList.remove("fullscreen-mode");
+      soundPanel.style.display = "block";
+      mainLayout.style.justifyContent = "center"; // adjust if needed
+    });
+  }
+});
