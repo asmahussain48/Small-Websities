@@ -1,9 +1,8 @@
-// Timer Setup
+
 var startButton = document.getElementById("start");
 var stopButton = document.getElementById("stop");
 var resetButton = document.getElementById("reset");
 var timerDisplay = document.getElementById("timer");
-
 var timerInterval;
 var totalTimeInSeconds = 3000;
 var timerIsRunning = false;
@@ -14,7 +13,6 @@ function showTime() {
   var timeString = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
   timerDisplay.textContent = timeString;
 }
-
 function startTimer() {
   if (timerIsRunning) return;
   timerIsRunning = true;
@@ -45,7 +43,7 @@ function resetTimer() {
 startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);
 resetButton.addEventListener("click", resetTimer);
-showTime(); // Initialize
+showTime(); 
 
 var soundFiles = {
   original: "sounds/original.mp3",
@@ -105,7 +103,6 @@ for (var i = 0; i < sliders.length; i++) {
   });
 }
 
-// Fullscreen Toggle
 var fullscreenButton = document.getElementById("fullscreen");
 var fullscreenWrapper = document.getElementById("fullscreen-wrapper");
 var mainLayout = document.querySelector(".main-layout");
