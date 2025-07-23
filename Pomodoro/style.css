@@ -53,11 +53,6 @@ button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
 #start {
   background-color: #27ae60;
 }
@@ -67,7 +62,20 @@ button:hover {
 }
 
 #reset {
-  background-color: #7f8c8d;
+  background-color: #5bc1c9;
+}
+#start:hover, #stop:hover, #reset:hover {
+  cursor: pointer;
+  background-color: #767977;
+  color: white;
+  transform: translateY(-2px);
+  opacity: 0.9;
+
+}
+
+#start:active, #stop:active, #reset:active {
+  background-color:#1e1e1e;
+  color: white;
 }
 
 /* === SOUND PANEL === */
@@ -125,7 +133,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]:hover::-webkit-slider-thumb {
-  background-color: #4facfe;
+   background-color: #007ca1;
+  width: 20px;
+  height: 20px;
+  border-color: #00f2fe;
 }
 
 input[type="range"]::-moz-range-thumb {
