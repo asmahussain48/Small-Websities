@@ -46,14 +46,24 @@ body {
 #start {
   background-color: #27ae60;
 }
+
 #stop {
   background-color: #e74c3c;
 }
+
 #reset {
-  background-color: #3498db;
+  background-color: #5bc1c9;
+}
+#start:hover, #stop:hover, #reset:hover {
+  cursor: pointer;
+  background-color: #767977;
+  color: white;
+  transform: translateY(-2px);
+  opacity: 0.9;
+
 }
 
-.button-wrapper button:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+#start:active, #stop:active, #reset:active {
+  background-color:#1e1e1e;
+  color: white;
 }
