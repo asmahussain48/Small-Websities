@@ -4,8 +4,9 @@ var stopButton = document.getElementById("stop");
 var resetButton = document.getElementById("reset");
 var timerDisplay = document.getElementById("timer");
 var alarmAudio = new Audio("bell.mp3");
+const DEFAULT_TIME_SECONDS = 25 * 60;
+var totalTimeInSeconds = DEFAULT_TIME_SECONDS;
 var timerInterval;
-var totalTimeInSeconds = 1500;
 var timerIsRunning = false;
 
 function showTime() {
@@ -39,13 +40,16 @@ function stopTimer() {
     alarmAudio.pause();
   alarmAudio.currentTime = 0;
 }
-
 function resetTimer() {
   clearInterval(timerInterval);
-  totalTimeInSeconds = 3000;
+  totalTimeInSeconds = DEFAULT_TIME_SECONDS;
   showTime();
   timerIsRunning = false;
+  alarmAudio.pause();
+alarmAudio.currentTime = 0;
+
 }
+
 
 startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);

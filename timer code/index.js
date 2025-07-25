@@ -2,9 +2,8 @@ const startBtn = document.getElementById("start");
 const stopBtn = document.getElementById("stop");
 const resetBtn = document.getElementById("reset");
 const timerDisplay = document.getElementById("timer");
-const DEFAULT_TIME = 50 * 60; // 50 minutes
 
-let totalTime = DEFAULT_TIME
+let totalTime = 50 * 60; // 50 minutes
 let timerInterval;
 let isRunning = false;
 
@@ -18,7 +17,6 @@ function updateDisplay() {
 function startTimer() {
   if (isRunning) return;
   isRunning = true;
-   console.log("Timer started with:", totalTime, "seconds"); // ← Debug line
   timerInterval = setInterval(() => {
     if (totalTime > 0) {
       totalTime--;
@@ -38,7 +36,7 @@ function stopTimer() {
 
 function resetTimer() {
   clearInterval(timerInterval);
-  totalTime = DEFAULT_TIME;
+  totalTime = 50 * 60;
   updateDisplay();
   isRunning = false;
 }
