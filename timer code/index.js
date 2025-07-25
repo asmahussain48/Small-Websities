@@ -38,7 +38,7 @@ function stopTimer() {
 
 function resetTimer() {
   clearInterval(timerInterval);
-  totalTime = 50 * 60;
+  totalTime = DEFAULT_TIME;
   updateDisplay();
   isRunning = false;
 }
