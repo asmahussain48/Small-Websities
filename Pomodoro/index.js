@@ -1,10 +1,11 @@
-
+// Timer functionality
 var startButton = document.getElementById("start");
 var stopButton = document.getElementById("stop");
 var resetButton = document.getElementById("reset");
 var timerDisplay = document.getElementById("timer");
+var alarmAudio = new Audio("bell.mp3");
 var timerInterval;
-var totalTimeInSeconds = 3000;
+var totalTimeInSeconds = 1500;
 var timerIsRunning = false;
 
 function showTime() {
@@ -13,16 +14,20 @@ function showTime() {
   var timeString = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
   timerDisplay.textContent = timeString;
 }
+
+
+
 function startTimer() {
   if (timerIsRunning) return;
   timerIsRunning = true;
   timerInterval = setInterval(function () {
     if (totalTimeInSeconds > 0) {
-      totalTimeInSeconds = totalTimeInSeconds - 1;
+      totalTimeInSeconds -= 1;
       showTime();
     } else {
       clearInterval(timerInterval);
       timerIsRunning = false;
+      alarmAudio.play().catch(() => {});
       alert("Time's up!");
     }
   }, 1000);
@@ -31,6 +36,8 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timerInterval);
   timerIsRunning = false;
+    alarmAudio.pause();
+  alarmAudio.currentTime = 0;
 }
 
 function resetTimer() {
@@ -45,6 +52,7 @@ stopButton.addEventListener("click", stopTimer);
 resetButton.addEventListener("click", resetTimer);
 showTime(); 
 
+// Ambient sound system
 var soundFiles = {
   original: "sounds/original.mp3",
   lofi: "sounds/lofi.mp3",
@@ -97,12 +105,14 @@ for (var i = 0; i < sliders.length; i++) {
       }
     }
 
-    // Optional visual style for slider (simple gradient)
+  // Optional gradient for slider
     var percent = (event.target.value - event.target.min) / (event.target.max - event.target.min) * 100;
     event.target.style.background = "linear-gradient(to right, #4facfe 0%, #00f2fe " + percent + "%, #ccc " + percent + "%)";
   });
 }
 
+
+// Fullscreen toggle logic
 var fullscreenButton = document.getElementById("fullscreen");
 var fullscreenWrapper = document.getElementById("fullscreen-wrapper");
 var mainLayout = document.querySelector(".main-layout");
@@ -119,7 +129,7 @@ fullscreenButton.addEventListener("click", function () {
     document.exitFullscreen().then(function () {
       fullscreenWrapper.classList.remove("fullscreen-mode");
       soundPanel.style.display = "block";
-      mainLayout.style.justifyContent = "center"; // adjust if needed
+     mainLayout.style.justifyContent = "center";
     });
   }
 });
