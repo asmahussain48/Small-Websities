@@ -1,0 +1,154 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: purple;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+header .left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* About Section */
+#about {
+  padding: 2rem;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.intro {
+  max-width: 600px;
+}
+
+/* Skills Section */
+#skills {
+  padding: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Projects */
+#projects {
+  padding: 2rem;
+}
+
+.project {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+}
+
+/* Recommendations */
+#recommendations {
+  padding: 2rem;
+}
+
+.rec-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rec {
+  flex: 1 1 250px;
+  background-color: #f9f9f9;
+  border-left: 4px solid purple;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form input, form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+form button {
+  background: white;
+  border: 2px solid purple;
+  color: purple;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: purple;
+  color: white;
+}
+
+/* Scroll Top Button */
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: purple;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

@@ -1,0 +1,86 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jane Doe Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="left">
+      <h1>Jane Doe</h1>
+      <p>
+        <span>✉️ jdoe@jeemail.com</span><br>
+        <span>📞 +1 345 676 4598</span>
+      </p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#recommendations">Recommendations</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <div class="about-container">
+      <img src="images/avatar.jpg" alt="Avatar" class="avatar">
+      <div class="intro">
+        <h2>Hi, I'm Jane Doe! 👋</h2>
+        <p>I am a full stack developer with 2 years of experience in both application and presentation layers. I have worked on applications and microservices deployed on IBM Cloud. I am an avid user of IBM Watson Services and have worked on Watson Assistant, NLU, Sentiment analyzer to name a few.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"> <div>🔖 HTML</div> <p>2 years experience</p></div>
+      <div class="skill"> <div>💻 JavaScript</div> <p>1.5 years experience</p></div>
+      <div class="skill"> <div>☕ Java</div> <p>0.5 years experience</p></div>
+      <div class="skill"> <div>⚛️ React</div> <p>1 year experience</p></div>
+      <div class="skill"> <div>🚀 Node.js</div> <p>1 year experience</p></div>
+      <div class="skill"> <div>🔒 CSS</div> <p>2 years experience</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Chatbot</h3>
+      <p>Developed a secure website integrated with chatbot for an automobile client using HTML, CSS, JavaScript and IBM Watson Assistant</p>
+    </div>
+    <div class="project">
+      <h3>Sentiment Analyzer</h3>
+      <p>Developed and deployed a sentiment analyzer for the box reviews section of an eCommerce platform using IBM NLU</p>
+    </div>
+    <div class="project">
+      <h3>Fashion Website</h3>
+      <p>Created a styled multi-page website for a new player in the fashion industry and integrated it with a shopping cart, using stripe for payment gateway</p>
+    </div>
+  </section>
+
+  <section id="recommendations">
+    <h2>Recommendations</h2>
+    <div class="rec-container" id="rec-list">
+      <div class="rec">“ Jane is a very quick learner and quickly grasps key concepts of Web development. She got a great attitude & she is an excellent team player. She has a curious mind and asks the right question. She takes initiative within a team and has potentials to lead the team. ”</div>
+      <div class="rec">“ Working with Jane has been an awesome experience. She is highly knowledgeable and always goes the extra step to make sure everything is right. For any future projects that need her expertise I would definitely want to work with her again. ”</div>
+      <div class="rec">“ I had worked along with Jane during the initial phase of our venture which needed Web development. She is a committed resource who has in depth knowledge about the domain. She will be an asset for any organisation! ”</div>
+    </div>
+    <form id="recForm">
+      <h3>Leave a Recommendation</h3>
+      <input type="text" id="name" placeholder="Name (Optional)" />
+      <textarea id="message" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <button class="scroll-top" onclick="scrollToTop()">⬆️</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
