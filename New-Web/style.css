@@ -13,3 +13,16 @@ header {
   flex-wrap: wrap;
   align-items: center;
 }
+
+
+header .left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
