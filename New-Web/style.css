@@ -137,12 +137,7 @@ form button {
   transition: 0.3s;
 }
 
-form button:hover {
-  background: purple;
-  color: white;
-}
 
-/* Scroll Top Button */
 .scroll-top {
   position: fixed;
   right: 20px;
