@@ -16,7 +16,7 @@ function showTime() {
   timerDisplay.textContent = timeString;
 }
 
-    <!-- coommit for Pomodoro app Lanuced -->
+  
 
 function startTimer() {
   if (timerIsRunning) return;
