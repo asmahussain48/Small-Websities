@@ -3,9 +3,6 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 
-def chatbot_reply(text):
-
-    text = text.lower()
 
     if "hi" in text or "hello" in text:
         return "Hello 😊 How can I help you?"
