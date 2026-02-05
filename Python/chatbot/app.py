@@ -23,6 +23,11 @@ def chatbot_reply(text):
         return "Sorry, I didn't understand 😅"
 
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
 @app.route("/chat", methods=["POST"])
 def chat():
 
