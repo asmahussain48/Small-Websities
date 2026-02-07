@@ -1,86 +1,318 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asma Hussain Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="left">
-      <h1>Asma Hussain</h1>
-      <p>
-        <span>✉️ asma@jeemail.com</span><br>
-        <span>📞 +1 123 456 7890</span>
-      </p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about"><u>About</u></a></li>
-        <li><a href="#projects"><u>Project details</u></a></li>
-        <li><a href="#skills"><u>Skills</u></a></li>
-        <li><a href="#recommendations"><u>Recommendations</u></a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section id="about">
-    <div class="about-container">
-      <img src="images/avatar.png" alt="Avatar" class="avatar">
-      <div class="intro">
-        <h2>Hi, I'm Asma Hussain! 👋</h2>
-        <p>I am a detail-oriented front-end developer with a strong passion for crafting interactive and responsive web applications. I enjoy turning complex problems into intuitive user interfaces. I have experience working with modern frameworks and am constantly learning new tools to enhance user experience and performance.</p>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personal Portfolio Website(my portfolio)</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+      <!-- Move to up button -->
+      <div class="scroll-button">
+          <a href="#home"><i class="fas fa-arrow-up"></i></a>
       </div>
+      <!-- navgaition menu -->
+      <nav>
+          <div class="navbar">
+              <div class="logo"><a href="#">Portfo<span>lio.</span></a></div>
+              <div class="menu">
+                  <li><a href="#home">Home</a></li>
+                 <li> <a href="#about">About</a></li>
+                  <li><a href="#skills">Skills</a></li>
+                 <li><a href="#services">Services</a></li>
+                  <li><a href="#portfolio">Portfolio</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                  
+                
+                  <div class="cancel-btn">
+                      <i class="fas fa-times"></i>
+                  </div>
+              </div>
+              <div class="media-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="www.linkedin.com/in/suhani-kewat-bca"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="www.github.com/suhani866"><i class="fab fa-github"></i></a>
+              </div>
+          </div>
+          <div class="menu-btn">
+              <i class="fas fa-bars"></i>
+          </div>
+      </nav>
+      <!-- Home Section Start -->
+     <section id="home" class="hero-section">
+  <div class="hero-content">
+    <img src="female-developer-background_665280-9658.avif" alt="Banner Photo" class="banner-photo" style="width:100%;max-height:600px;object-fit:cover;border-radius:12px;margin-bottom:24px;">
+    <h1>Hi, I'm <span class="highlight">Suhani Kewat</span></h1>
+    <h2><span class="typed-text"></span><span class="cursor">&nbsp;</span></h2>
+    <p>Frontend Developer | React Enthusiast | Python Learner</p>
+    
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn primary">View Projects</a>
+      <a href="C:\Users\Dell\OneDrive\Desktop\SUHANI KEWAT resume.pdf" class="btn secondary" download>Download CV</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill"> <div>🔖 HTML</div> <p>2 years experience</p></div>
-      <div class="skill"> <div>💻 JavaScript</div> <p>1.5 years experience</p></div>
-      <div class="skill"> <div>☕ Java</div> <p>0.5 years experience</p></div>
-      <div class="skill"> <div>⚛️ React</div> <p>1 year experience</p></div>
-      <div class="skill"> <div>🚀 Node.js</div> <p>1 year experience</p></div>
-      <div class="skill"> <div>🔒 CSS</div> <p>2 years experience</p></div>
-    </div>
-  </section>
+      <!-- About Section Start -->
+      <section class="about" id="about">
+          <div class="content">
+              <div class="title"><span>About Me</span></div>
+              <div class="about-details">
+                  <div class="left">
+                      <img src="female-developer-background_665280-9650.avif" alt="" />
+                  </div>
+                  <div class="right">
+                      <div class="topic">Designing Is My Passion</div><p>
+                        I’m Suhani Kewat, a frontend developer passionate about building responsive, user-friendly web applications that merge clean UI with dynamic functionality. I recently completed my BCA degree from Makhan Lal University of Technology and Journalism, where I built real-world projects like a Weather App (API-driven), ATM System (C#), and an eCommerce platform with dynamic pricing and smart cart flows.
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Portfolio Website</h3>
-      <p>Designed and developed a personal portfolio website to showcase projects and skills using HTML, CSS, and JavaScript. Implemented responsive design and interactive components.</p>
-    </div>
-    <div class="project">
-      <h3>E-commerce Admin Dashboard</h3>
-      <p>Built a dashboard for managing products, orders, and customer data. Used React for front-end components and Chart.js for visualizations.</p>
-    </div>
-    <div class="project">
-      <h3>Blog Platform</h3>
-      <p>Created a blog application with user authentication, post creation, and comment features. Integrated Firebase for back-end services.</p>
-    </div>
-  </section>
+My core strengths lie in React, TailwindCSS, modular design, and API integration—and I love refining code until it’s fast, scalable, and intuitive. I believe design isn’t just how things look—it’s how they work.
 
-  <section id="recommendations">
-    <h2>Recommendations</h2>
-    <div class="rec-container" id="rec-list">
-      <div class="rec">“ Asma is a very focused and creative developer. Her attention to detail and dedication to writing clean code make her stand out in any team. ”</div>
-      <div class="rec">“ Collaborating with Asma was a great experience. She has excellent communication skills and consistently delivers on time. ”</div>
-      <div class="rec">“ Asma quickly understands requirements and turns ideas into fully functional solutions. She is proactive and eager to learn. ”</div>
-    </div>
-    <form id="recForm">
-      <h3>Leave a Recommendation</h3>
-      <input type="text" id="name" placeholder="Name (Optional)" />
-      <textarea id="message" placeholder="Message" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+Currently, I’m focused on improving my GitHub visibility, posting developer insights on LinkedIn, and collaborating on projects that solve real-world challenges.
+                      </p>
+                      <div class="button">
+                          <button>Download CV</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- My Skill Section Start -->
+      <!-- Section Tag and Other Div will same where we need to put same CSS -->
+      <section class="skills" id="skills">
+          <div class="content">
+              <div class="title"><span>My Skills</span></div>
+                  
+                  <div class="boxes">
+                      <div class="box">
+                          <div class="topic">HTML5+CSS3</div>
+                          <p>Semantic structure, responsive layouts, and advanced styling (transitions, placeholders, media queries)</p>
+                          
+                      </div>
+                      <div class="box">
+                          <div class="topic">React</div>
+                          <p>Component-based architecture, state management, hooks, and lifecycle methods for building interactive UIs</p>
+                        
+                      </div>
+                      <div class="box">
+                          <div class="topic">JavScript(ES6+)</div>
+                    
+                          <p>DOM manipulation, event handling, asynchronous programming (Promises, async/await), and modular code design</p>
+                      </div>
+                      <div class="box">
+                          <div class="topic">C# (ATM System)</div>
+                          <p>Console-based ATM system with modular code structure, transaction handling, and secure PIN verification</p>
+                          
+                      </div>
+                        <div class="box">
+                            <div class="topic">VB.NET (Police Public Interaction System)</div>
+                            <p>Designed user-friendly interfaces for complaint registration and status tracking with real-time updates</p>
+                        </div>
+                        <div class="box">
+                            <div class="topic">GitHub Optimization</div>
+                            <p>Project hosting, README creation, commit discipline, live demos</p>
+                            
+                        </div>
+                    </div>
+          </div>
+      </section>
+      <!-- My Services Section Start -->
+      <section class="services" id="services">
+          <div class="content">
+              <div class="title"><span>My Services</span></div>
+              <div class="boxes">
+                  <div class="box">
+                      <div class="icon">
+                          <i class="fas fa-desktop"></i>
+                      </div>
+                      <div class="topic">Web Devlopment</div>
+                      <p>Building responsive websites using HTML5, CSS3, JaveScript, React and Tailwind CSS</p>
+                  </div>
+                  <div class="box">
+                      <div class="icon">
+                          <i class="fas fa-paint-brush"></i>
+                      </div>
+                      <div class="topic">Graphic Design</div>
+                      <p>Creating UI mockups and branding assets using Figma</p>
+                    </div>
+                     
+                  <div class="box">
+                      <div class="icon">
+                          <i class="fas fa-tablet-alt"></i>
+                      </div>
+                      <div class="topic">Apps Devlopment</div>
+                      <p>Developing console and web apps with C# and JavaScript.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section class="portfolio" id="potfolio">
+          <div class="content">
+              <h1 class="title"> My Work</h1>
+              <div class="boxes">
+                  <div class="box">
+                     <div class="icon">
+                      <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                
+                  <div class="topic">
+                      ATM Simulator(C# Console Application)</div>
+                      <p>Built with C#, this console-based system simulates ATM functions including:
 
-  <button class="scroll-top" onclick="scrollToTop()">⬆️</button>
-<!--Java file-->
-  <script src="script.js"></script>
-</body>
+                                PIN verification and account login
+
+                                Balance check, deposit, and withdrawal operations
+
+                                Modular backend structure for transaction accuracy and scalability
+                                </p>
+                      </div>
+                  <div class="box">
+                      <div class="icon"><a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+                  <div class="topic">
+                      Personal Portfolio Website</div>
+                      <p>Crafted using HTML5, CSS3, and JavaScript, this responsive portfolio showcases my skills, project work, and contact details. Designed with modular sections and intuitive navigation for an optimal user experience across devices.</p>
+
+                  </div>
+                   <div class="box">
+                     <div class="icon">
+                      <a href="https://github.com/suhani866/Weather-app.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                
+                  <div class="topic">
+                      Weather App</div>
+                      <p>Developed with HTML, CSS, JavaScript, and the OpenWeatherMap API, this app delivers dynamic weather updates based on user location.
+
+                        Real-time data for temperature, humidity, and weather conditions
+
+                        Responsive design optimized for both desktop and mobile
+
+                        Hosted via GitHub Pages for public accessibility
+                        </p>
+                      </div>
+                  <div class="box">
+                    <div class="icon"> <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                  <div class="topic">
+                      E-commerce Shopping Website </div>
+                     <p>Created an e-commerce platform with category-wise product browsing, cart functionality, and checkout flow.  
+                        - Integrated secure payment module (demo only).  
+                        - Enhanced user experience through intuitive navigation and responsive design.
+</p>
+                 </div>
+
+                  <div class="box">
+                     <div class="icon">
+                      <a href="https://github.com/suhani866/pro.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                
+                  <div class="topic">
+                      Police Public Interaction System</div>
+                      <p>Designed in VB.NET for streamlined complaint registration and status tracking.  
+- Created user-friendly interfaces for both police and public portals.  
+- Implemented real-time status updates and secure login system.
+</p>
+                      </div>
+
+    
+              </div>
+              </div>
+      </section>
+      <!-- Contact Me section Start -->
+      <section class="contact" id="contact">
+          <div class="content">
+              <div class="title"><span>Contact Me</span></div>
+               <div class="contact-content">
+                <div class="column left">
+                    <div class="text">Get in Touch</div>
+                    <p>Let’s collaborate! Whether it’s a freelance project or a full-time opportunity, I’d love to hear from you.</p>
+                    <div class="icons">
+                        <div class="row">
+                            <i class="fas fa-user"></i>
+                            <div class="info">
+                                <div class="head">Name</div>
+                                <div class="sub-title">Suhani Kewat</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info">
+                                <div class="head">Address</div>
+                                <div class="sub-title">Madhya Pradesh, India</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info">
+                                <div class="head">Email</div>
+                                <div class="sub-title">kewatsuhani3@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column right">
+                    <div class="text">Message me</div>
+                    <form action="#">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" placeholder="Name" required>
+                            </div>
+                            <div class="field email">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="field textarea">
+                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                        </div>
+                        <div class="button-area">
+                            <button type="submit">Send message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+              <div class="text">
+                  <div class="topic">Have Any Project?</div>
+                  <p>Let’s collaborate! Whether it’s a freelance project or a full-time opportunity, I’d love to hear from you.</p>
+                  <div class="button">
+                      <button>Let's Chat</button>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- Footer Section Start -->
+      <footer>
+          <div class="text">
+              <span>Created By <a href="#">Suhani Kewat</a> | &#169; 2025 All Rights Reserved</span>
+          </div>
+      </footer>
+      <script src="script.js"></script>
+      <script>
+const roles = ["Frontend Developer", "UI Designer", "React Enthusiast"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+  const typedText = document.querySelector(".typed-text");
+  if (!typedText) return;
+  current = roles[i];
+  typedText.textContent = current.slice(0, j);
+
+  if (!isDeleting && j < current.length) {
+    j++; setTimeout(type, 120);
+  } else if (isDeleting && j > 0) {
+    j--; setTimeout(type, 60);
+  } else {
+    isDeleting = !isDeleting;
+    if (!isDeleting) i = (i + 1) % roles.length;
+    setTimeout(type, 800);
+  }
+}
+document.addEventListener("DOMContentLoaded", type);
+</script>
+
+  </body>
 </html>
+
