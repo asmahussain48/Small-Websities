@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LectureAI — Free Smart Study Assistant</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
   if ('serviceWorker' in navigator) {
@@ -16,44 +16,44 @@
 
 <!-- OFFLINE BANNER -->
 <div class="offline-banner" id="offlineBanner">
-  ⚡ Offline mode — AI assistant is using the built-in engine. Voice recognition may be limited.
+  ⚡ Offline mode — AI uses built-in engine. Voice recognition may be limited.
 </div>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="tb-logo">
-    <div class="tb-mark">LA</div>
-    <div class="tb-name">Lecture<span>AI</span></div>
-    <div class="tb-badge">100% FREE</div>
-  </div>
-  <div class="tb-mid">
+  <div class="tb-left">
+    <div class="tb-logo">
+      <div class="tb-mark">LA</div>
+      <div class="tb-name">Lecture<span>AI</span></div>
+    </div>
     <div class="rec-pill" id="recPill">
       <div class="rec-pip"></div>
       <span id="recLabel">idle</span>
     </div>
   </div>
   <div class="tb-right">
-    <select id="langSel" style="background:var(--s2);border:1px solid var(--b1);border-radius:6px;color:var(--t2);font-family:var(--fm);font-size:11px;padding:4px 8px;outline:none;cursor:pointer"></select>
-    <span id="wc2" style="font-family:var(--fm);font-size:10px;color:var(--t3);margin-left:4px">0 words</span>
+    <select id="langSel" class="lang-sel"></select>
+    <span id="wc2" class="wc-badge">0 words</span>
+    <button class="rec-btn" id="recBtn" onclick="toggleRec()">
+      <div class="rec-dot"></div>
+      <span id="recBtnTxt">Start Recording</span>
+    </button>
   </div>
+</div>
+
+<!-- NO SPEECH BANNER -->
+<div class="ns-banner" id="nsBanner">
+  ⚠ Speech recognition requires Google Chrome. You can still type or paste lecture notes manually below.
 </div>
 
 <!-- LAYOUT -->
 <div class="layout">
 
-  <!-- LEFT: TRANSCRIPT -->
-  <div class="left-panel">
-    <div class="panel-head">
-      <span class="panel-tag">📡 Live Transcript</span>
-      <button class="rec-btn" id="recBtn" onclick="toggleRec()">
-        <div class="rbdot"></div>
-        <span id="recBtnTxt">▶ Start Recording</span>
-      </button>
-    </div>
-    <div class="ns-banner" id="nsBanner">
-      ⚠ Speech recognition requires Google Chrome. You can still type or paste lecture notes manually below.
-    </div>
-    <div class="tx-wrap">
+  <!-- LEFT: TRANSCRIPT + AUDIO -->
+  <div class="left-col">
+    <div class="sec-head">Live Transcript</div>
+    <div class="notes-panel">
+      <div class="you-label">You</div>
       <textarea class="tx-box" id="txBox"
         placeholder="Your lecture transcript appears here in real time...
 
@@ -63,26 +63,33 @@ HOW TO USE:
   3.  Speak — words appear as you talk
   4.  Ask the AI any question on the right →
 
-  You can also TYPE or PASTE notes manually.
-  The AI will use this text to answer your questions."
+  You can also TYPE or PASTE notes manually."
         spellcheck="false"
         oninput="onTxEdit()"
       ></textarea>
-      <div class="interim-bar">
-        <div class="interim-txt" id="interimTxt"></div>
-      </div>
+      <div class="interim-line" id="interimTxt"></div>
     </div>
     <div class="tx-foot">
       <span class="wc" id="wcTxt">0 words</span>
       <button class="clr-btn" onclick="clearTx()">✕ clear</button>
     </div>
+
+    <!-- AUDIO WAVEFORM -->
+    <div class="audio-panel">
+      <div class="sec-head">Audio</div>
+      <div class="audio-body">
+        <div class="waveform" id="waveform"></div>
+        <div class="audio-waiting" id="audioWaiting">
+          <div class="spin"></div>
+          <span>Waiting for audio input...</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- RIGHT: CHAT -->
-  <div class="right-panel">
-    <div class="panel-head">
-      <span class="panel-tag">🎓 Study Assistant</span>
-    </div>
+  <!-- RIGHT: STUDY ASSISTANT CHAT -->
+  <div class="right-col">
+    <div class="sec-head">Study Assistant</div>
     <div class="chat-msgs" id="chatMsgs">
       <div class="empty" id="emptyState">
         <div class="empty-orb">🎓</div>
@@ -98,17 +105,14 @@ HOW TO USE:
       </div>
     </div>
     <div class="input-area">
-      <div class="input-wrap">
-        <textarea class="ci" id="chatIn"
-          placeholder="Ask anything about the lecture…"
-          rows="1"
-          onkeydown="onKey(event)"
-          oninput="autoH(this)"
-        ></textarea>
-      </div>
-      <button class="send-btn" id="sendBtn" onclick="send()">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
+      <input
+        class="chat-input"
+        id="chatIn"
+        type="text"
+        placeholder="Ask anything about the lecture…"
+        onkeydown="onKey(event)"
+      />
+      <button class="send-btn" id="sendBtn" onclick="send()">Send</button>
     </div>
   </div>
 

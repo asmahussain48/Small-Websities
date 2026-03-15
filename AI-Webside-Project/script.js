@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.style.opacity = '.4'; btn.style.cursor = 'not-allowed';
     btn.onclick = () => toast('Use Google Chrome for voice recording', 'err');
   }
+  buildWaveform();
 });
 
 function toggleRec(){ isRec ? stopRec() : startRec(); }
@@ -67,6 +68,7 @@ function startRec(){
     document.getElementById('recBtnTxt').textContent = '■ Stop Recording';
     document.getElementById('recPill').classList.add('live');
     document.getElementById('recLabel').textContent = 'LIVE';
+    startWaveform();
     toast('Recording started — speak clearly!', 'ok');
   };
 
@@ -130,7 +132,49 @@ function stopRec(){
   document.getElementById('recLabel').textContent = 'idle';
   const el = document.getElementById('interimTxt');
   if(el) el.textContent = '';
+  stopWaveform();
   toast('Recording stopped');
+}
+
+// ══════════════════════════════════════════════
+//  WAVEFORM ANIMATION
+// ══════════════════════════════════════════════
+const WBARS = 28;
+let waveInterval = null;
+
+function buildWaveform(){
+  const wf = document.getElementById('waveform');
+  if(!wf) return;
+  wf.innerHTML = '';
+  for(let i = 0; i < WBARS; i++){
+    const b = document.createElement('div');
+    b.className = 'wbar';
+    b.style.height = '4px';
+    wf.appendChild(b);
+  }
+}
+
+function startWaveform(){
+  const wf = document.getElementById('waveform');
+  const waiting = document.getElementById('audioWaiting');
+  if(!wf) return;
+  wf.classList.add('active');
+  if(waiting) waiting.style.display = 'none';
+  waveInterval = setInterval(() => {
+    wf.querySelectorAll('.wbar').forEach(b => {
+      const h = Math.random() * 22 + 3;
+      b.style.height = h + 'px';
+      b.style.opacity = 0.4 + Math.random() * 0.6;
+    });
+  }, 90);
+}
+
+function stopWaveform(){
+  clearInterval(waveInterval);
+  const wf = document.getElementById('waveform');
+  const waiting = document.getElementById('audioWaiting');
+  if(wf){ wf.classList.remove('active'); buildWaveform(); }
+  if(waiting) waiting.style.display = 'flex';
 }
 
 function updateTx(){
