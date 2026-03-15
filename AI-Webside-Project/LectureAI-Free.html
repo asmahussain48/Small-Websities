@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LectureAI — Free Smart Study Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-logo">
+    <div class="tb-mark">LA</div>
+    <div class="tb-name">Lecture<span>AI</span></div>
+    <div class="tb-badge">100% FREE</div>
+  </div>
+  <div class="tb-mid">
+    <div class="rec-pill" id="recPill">
+      <div class="rec-pip"></div>
+      <span id="recLabel">idle</span>
+    </div>
+  </div>
+  <div class="tb-right">
+    <select id="langSel" style="background:var(--s2);border:1px solid var(--b1);border-radius:6px;color:var(--t2);font-family:var(--fm);font-size:11px;padding:4px 8px;outline:none;cursor:pointer"></select>
+    <span id="wc2" style="font-family:var(--fm);font-size:10px;color:var(--t3);margin-left:4px">0 words</span>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- LEFT: TRANSCRIPT -->
+  <div class="left-panel">
+    <div class="panel-head">
+      <span class="panel-tag">📡 Live Transcript</span>
+      <button class="rec-btn" id="recBtn" onclick="toggleRec()">
+        <div class="rbdot"></div>
+        <span id="recBtnTxt">▶ Start Recording</span>
+      </button>
+    </div>
+    <div class="ns-banner" id="nsBanner">
+      ⚠ Speech recognition requires Google Chrome. You can still type or paste lecture notes manually below.
+    </div>
+    <div class="tx-wrap">
+      <textarea class="tx-box" id="txBox"
+        placeholder="Your lecture transcript appears here in real time...
+
+HOW TO USE:
+  1.  Click  ▶ Start Recording
+  2.  Allow microphone permission
+  3.  Speak — words appear as you talk
+  4.  Ask the AI any question on the right →
+
+  You can also TYPE or PASTE notes manually.
+  The AI will use this text to answer your questions."
+        spellcheck="false"
+        oninput="onTxEdit()"
+      ></textarea>
+      <div class="interim-bar">
+        <div class="interim-txt" id="interimTxt"></div>
+      </div>
+    </div>
+    <div class="tx-foot">
+      <span class="wc" id="wcTxt">0 words</span>
+      <button class="clr-btn" onclick="clearTx()">✕ clear</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: CHAT -->
+  <div class="right-panel">
+    <div class="panel-head">
+      <span class="panel-tag">🎓 Study Assistant</span>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="empty" id="emptyState">
+        <div class="empty-orb">🎓</div>
+        <div class="empty-t">Your AI Study Assistant</div>
+        <div class="empty-s">Record your lecture, then ask anything. I create structured notes, explain topics, and clarify concepts.</div>
+        <div class="chips">
+          <div class="chip" onclick="quickAsk('Explain what was just taught in the lecture')">Explain last topic</div>
+          <div class="chip" onclick="quickAsk('Create detailed structured notes with headings, bold key terms, and bullet points from this lecture')">Create notes</div>
+          <div class="chip" onclick="quickAsk('Summarize all topics covered so far in simple terms')">Summarize</div>
+          <div class="chip" onclick="quickAsk('What are the most important key points I must remember from this lecture?')">Key points</div>
+          <div class="chip" onclick="quickAsk('Create a quick-revision cheat sheet from the lecture content')">Cheat sheet</div>
+        </div>
+      </div>
+    </div>
+    <div class="input-area">
+      <div class="input-wrap">
+        <textarea class="ci" id="chatIn"
+          placeholder="Ask anything about the lecture…"
+          rows="1"
+          onkeydown="onKey(event)"
+          oninput="autoH(this)"
+        ></textarea>
+      </div>
+      <button class="send-btn" id="sendBtn" onclick="send()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
