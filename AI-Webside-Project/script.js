@@ -1,4 +1,20 @@
 // ══════════════════════════════════════════════
+//  OFFLINE DETECTION
+// ══════════════════════════════════════════════
+function updateOfflineBanner(){
+  const b = document.getElementById('offlineBanner');
+  if(!b) return;
+  if(!navigator.onLine){
+    b.classList.add('show');
+  } else {
+    b.classList.remove('show');
+  }
+}
+window.addEventListener('online',  updateOfflineBanner);
+window.addEventListener('offline', updateOfflineBanner);
+window.addEventListener('DOMContentLoaded', updateOfflineBanner);
+
+// ══════════════════════════════════════════════
 //  SPEECH RECOGNITION  (FREE — Web Speech API)
 // ══════════════════════════════════════════════
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -274,7 +290,6 @@ BEHAVIOR:
 // ══════════════════════════════════════════════
 function localAI(question, transcript){
   const q = question.toLowerCase();
-  const tx = transcript.toLowerCase();
   const txOrig = transcript;
 
   // ── detect intent ──
